@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker Pro | Download & Tutorial</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --secondary: #0ea5e9;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --darker: #020617;
+      --dark-card: #1e293b;
+      --text: #ffffff;
+      --text-secondary: #94a3b8;
+      --gradient: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body {
+      background-color: var(--darker);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 20%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 700;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    
+    .logo-container:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-main {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+      gap: 10px;
+    }
+    
+    .logo-main i {
+      background: linear-gradient(45deg, #0ea5e9 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 2rem;
+    }
+    
+    .logo-main span {
+      color: #10b981;
+    }
+    
+    .logo-tagline {
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 1.5px;
+      margin-top: -5px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+    
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      font-size: 16px;
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .header-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .btn {
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background: rgba(16, 185, 129, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    /* Download Hero */
+    .download-hero {
+      padding: 140px 0 100px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
+                  url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      text-align: center;
+    }
+    
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .particle {
+      position: absolute;
+      background: #10b981;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: white;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+    
+    .hero-content h1 span {
+      color: var(--primary);
+    }
+    
+    .hero-content p {
+      font-size: 1.4rem;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+      border: 1px solid var(--primary);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+    
+    /* Download Section */
+    .download-section {
+      padding: 70px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+    
+    .download-container {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(37, 37, 37, 0.8));
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 900px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Google Sheets Format Only */
+    .format-selector {
+      margin-bottom: 40px;
+    }
+    
+    .format-title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+    }
+    
+    .format-grid {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .format-card {
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 16px;
+      padding: 30px 40px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      max-width: 400px;
+      width: 100%;
+    }
+    
+    .format-card:before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      z-index: -1;
+      border-radius: 18px;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    
+    .format-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      border-color: transparent;
+    }
+    
+    .format-card:hover:before {
+      opacity: 1;
+    }
+    
+    .format-card.selected {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .format-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      transition: all 0.3s;
+    }
+    
+    .format-card:hover .format-icon {
+      color: var(--text);
+      transform: scale(1.2);
+    }
+    
+    .format-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      transition: color 0.3s;
+      color: white;
+    }
+    
+    .format-card:hover .format-name {
+      color: var(--text);
+    }
+    
+    .format-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+      margin-bottom: 15px;
+    }
+    
+    .format-card:hover .format-desc {
+      color: var(--text);
+    }
+    
+    .format-size {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 15px;
+      border-radius: 20px;
+      margin: 15px auto;
+      width: fit-content;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .format-card:hover .format-size {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      border-color: transparent;
+    }
+    
+    /* Tutorial Video Sections */
+    .tutorial-section {
+      padding: 70px 0;
+      background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95));
+    }
+    
+    .tutorial-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .video-container {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 30px;
+    }
+    
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+    
+    .video-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .video-title {
+      font-size: 1.7rem;
+      color: var(--primary);
+    }
+    
+    .video-steps {
+      background: rgba(30, 41, 59, 0.4);
+      border-radius: 16px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin-top: 20px;
+    }
+    
+    .steps-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    
+    .steps-list {
+      list-style: none;
+    }
+    
+    .steps-list li {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+    }
+    
+    .steps-list li:before {
+      content: counter(step);
+      counter-increment: step;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--primary);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    
+    .steps-list {
+      counter-reset: step;
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      padding: 70px 0;
+    }
+    
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: rgba(30, 41, 59, 0.4);
+      border-radius: 12px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .faq-question i {
+      transition: transform 0.3s;
+    }
+    
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 1000px;
+    }
+    
+    /* Download Popup */
+    .download-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .download-popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .popup-content {
+      background: var(--dark-card);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+      border: 1px solid var(--primary);
+      transform: translateY(-50px);
+      transition: transform 0.5s ease;
+    }
+    
+    .download-popup.active .popup-content {
+      transform: translateY(0);
+    }
+    
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .popup-close:hover {
+      color: var(--primary);
+    }
+    
+    .popup-icon {
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    
+    .popup-title {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+    
+    .popup-message {
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .popup-download-btn {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 12px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+    
+    .popup-download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+    }
+    
+    .popup-loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255,255,255,0.1);
+      border-top: 5px solid var(--primary);
+      border-radius: 50%;
+      margin: 20px auto;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .countdown-item {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 10px;
+      min-width: 60px;
+    }
+    
+    .countdown-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .countdown-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--darker);
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: auto;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    
+    .footer-column h3 {
+      font-size: 20px;
+      margin-bottom: 25px;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 15px;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    .footer-links-bottom {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links-bottom a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links-bottom a:hover {
+      color: var(--primary);
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      
+      .nav-links,
+      .header-buttons {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+      
+      .download-container {
+        padding: 25px;
+      }
+      
+      .format-grid {
+        display: flex;
+        justify-content: center;
+      }
+      
+      .format-card {
+        padding: 25px 20px;
+      }
+      
+      .video-container {
+        height: 350px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .download-hero {
+        padding: 100px 0 60px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .video-container {
+        height: 250px;
+      }
+    }
+    
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo-container">
+          <div class="logo-main">
+            <i class="fas fa-chart-line"></i>
+            Habit<span>Tracker</span>Pro
+          </div>
+          <div class="logo-tagline">PREMIUM PRODUCTIVITY TOOL</div>
+        </a>
+        
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="#">Features</a>
+          <a href="#tutorial">How to Use</a>
+          <a href="#download">Download</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        
+        <div class="header-buttons">
+          <a href="index.html" class="btn btn-outline"><i class="fas fa-home"></i> Back to Home</a>
+          <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Download Hero -->
+  <section class="download-hero">
+    <div class="particles" id="particles"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">100% Free Forever</div>
+        <h1>Download <span>Habit Tracker Pro</span></h1>
+        <p>Get the ultimate productivity spreadsheet and start tracking your habits today</p>
+        <div class="hero-stats">
+          <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download-section" id="download">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title fade-in">Download Habit Tracker Pro</h2>
+        <p class="section-subtitle fade-in delay-1">Get the Google Sheets template and start your productivity journey</p>
+      </div>
+      
+      <div class="download-container fade-in delay-2">
+        <div class="format-selector">
+          <div class="format-title">Google Sheets Template</div>
+          <div class="format-grid">
+            <div class="format-card" id="googleSheetsCard">
+              <div class="format-icon">
+                <i class="fab fa-google-drive"></i>
+              </div>
+              <h3 class="format-name">Google Sheets</h3>
+              <p class="format-desc">Access from any device with Google account</p>
+              <div class="format-size">
+                <i class="fas fa-cloud"></i>
+                <span>Online - No Download Required</span>
+              </div>
+              <button class="btn btn-primary" style="margin-top: 15px; padding: 12px 30px;">
+                <i class="fas fa-download"></i> Get Google Sheets Template
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Use Video Section -->
+  <section class="tutorial-section" id="tutorial">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title fade-in">How to Upload & Use the Template</h2>
+        <p class="section-subtitle fade-in delay-1">Watch this video tutorial to learn how to upload and start using Habit Tracker Pro</p>
+      </div>
+      
+      <div class="tutorial-container fade-in delay-2">
+        <div class="video-info">
+          <h3 class="video-title">Template Upload & Setup Tutorial</h3>
+        </div>
+        
+        <div class="video-container">
+          <!-- تأكد من أن مسار الفيديو صحيح -->
+          <video id="tutorialVideo" controls poster="images/Capture d'écran 2025-12-15 183317.png">
+            <source src="images/Nouvel onglet - Google Chrome 2025-12-15 01-44-31.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        
+        <div class="video-steps">
+          <h3 class="steps-title">Quick Upload Steps</h3>
+          <ol class="steps-list">
+            <li>Click the "Get Google Sheets Template" button above</li>
+            <li>Make a copy of the template to your Google Drive</li>
+            <li>Open the copied spreadsheet in Google Sheets</li>
+            <li>Customize the template with your habits and goals</li>
+            <li>Start tracking your daily habits and progress</li>
+            <li>Access your tracker from any device with your Google account</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title fade-in">Frequently Asked Questions</h2>
+        <p class="section-subtitle fade-in delay-1">Find answers to common questions about Habit Tracker Pro</p>
+      </div>
+      
+      <div class="faq-container fade-in delay-2">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Is Habit Tracker Pro really free?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! Habit Tracker Pro is completely free forever. There are no hidden fees, subscriptions, or premium versions.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How do I save a copy to my Google Drive?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>After opening the template in Google Sheets, go to <strong>File → Make a copy</strong>. This will save a copy to your Google Drive that you can edit and customize.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I access it from my phone?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! Google Sheets works on all devices. Download the Google Sheets app, sign in with your Google account, and access your Habit Tracker from anywhere.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I customize the spreadsheet?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! The spreadsheet is fully customizable. You can change colors, add or remove habits, and adjust goals to match your preferences.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do I need a Google account?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, you need a free Google account to use the Google Sheets version. If you don't have one, you can create one for free at accounts.google.com.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Popup -->
+  <div class="download-popup" id="downloadPopup">
+    <div class="popup-content">
+      <button class="popup-close" id="closePopup">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="popup-icon">
+        <i class="fas fa-cloud-download-alt"></i>
+      </div>
+      <h3 class="popup-title">Creating Your Copy</h3>
+      <p class="popup-message">We're creating a personal copy of Habit Tracker Pro in your Google Drive...</p>
+      
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="countdown">3</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+      
+      <div class="popup-loader"></div>
+      
+      <a href="#" class="popup-download-btn" id="directDownload" target="_blank">
+        <i class="fas fa-external-link-alt"></i> Open Your Copy Now
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>HABIT TRACKER PRO</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 20px;">The ultimate productivity spreadsheet for building better habits and achieving your goals. 100% free forever.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Features</a></li>
+            <li><a href="#download"><i class="fas fa-chevron-right"></i> Download</a></li>
+            <li><a href="#tutorial"><i class="fas fa-chevron-right"></i> Video Tutorial</a></li>
+            <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Setup Guide</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Google Sheets Help</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Support</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Use</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> License</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Attribution</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Habit Tracker Pro. All rights reserved. This template is 100% free for personal and commercial use.</p>
+        <div class="footer-links-bottom">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced particle creation function
+    function createParticles() {
+      const container = document.getElementById('particles');
+      const particleCount = 30;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * 5 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 15;
+        
+        particle.style.cssText = `
+          left: ${posX}%;
+          top: ${posY}%;
+          width: ${size}px;
+          height: ${size}px;
+          animation-delay: ${delay}s;
+        `;
+        
+        container.appendChild(particle);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      createParticles();
+      
+      // Fade-in animation for elements
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // FAQ functionality
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+              otherItem.classList.remove('active');
+            }
+          });
+          
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Download functionality - رابط Google Sheets الخاص بك
+      const formatCard = document.getElementById('googleSheetsCard');
+      const downloadButton = formatCard.querySelector('.btn');
+      const downloadPopup = document.getElementById('downloadPopup');
+      const closePopup = document.getElementById('closePopup');
+      const directDownload = document.getElementById('directDownload');
+      const countdownEl = document.getElementById('countdown');
+      
+      // رابط Google Sheets الذي ينشئ نسخة لكل مستخدم
+      const googleSheetsCopyLink = "https://docs.google.com/spreadsheets/d/1xvtpPME32i3PGEIzGYGJLrZye0um3ckmuW6eo0bGS94/copy?usp=sharing";
+      
+      let countdownValue = 3;
+      let countdownInterval;
+      
+      function startDownload() {
+        clearInterval(countdownInterval);
+        // فتح الرابط في نافذة جديدة
+        window.open(googleSheetsCopyLink, '_blank');
+        downloadPopup.classList.remove('active');
+      }
+      
+      function startCountdown() {
+        countdownValue = 3;
+        countdownEl.textContent = countdownValue;
+        
+        countdownInterval = setInterval(() => {
+          countdownValue--;
+          countdownEl.textContent = countdownValue;
+          
+          if (countdownValue <= 0) {
+            startDownload();
+          }
+        }, 1000);
+      }
+      
+      // تعيين الرابط لزر التنزيل
+      directDownload.href = googleSheetsCopyLink;
+      
+      // إضافة event listener لزر التنزيل الرئيسي
+      downloadButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        downloadPopup.classList.add('active');
+        startCountdown();
+      });
+      
+      // إضافة event listener للكارد كله
+      formatCard.addEventListener('click', function(e) {
+        if (!e.target.closest('.btn')) {
+          downloadPopup.classList.add('active');
+          startCountdown();
+        }
+      });
+      
+      // إضافة event listener لزر التنزيل في الهيدر
+      const headerDownloadBtn = document.querySelector('.header-buttons a[href="#download"]');
+      if (headerDownloadBtn) {
+        headerDownloadBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          downloadPopup.classList.add('active');
+          startCountdown();
+        });
+      }
+      
+      // إضافة event listener لزر التنزيل في الهيرو
+      const heroDownloadBtn = document.querySelector('.hero-stats a.btn-primary');
+      if (heroDownloadBtn) {
+        heroDownloadBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          downloadPopup.classList.add('active');
+          startCountdown();
+        });
+      }
+      
+      // إغلاق البوب أب
+      closePopup.addEventListener('click', () => {
+        downloadPopup.classList.remove('active');
+        clearInterval(countdownInterval);
+      });
+      
+      // زر التنزيل المباشر في البوب أب
+      directDownload.addEventListener('click', function(e) {
+        e.preventDefault();
+        startDownload();
+      });
+      
+      // تحسين تجربة الفيديو
+      const tutorialVideo = document.getElementById('tutorialVideo');
+      if (tutorialVideo) {
+        // إضافة تحميل تلقائي للفيديو عند ظهوره
+        const videoObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              tutorialVideo.load();
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        videoObserver.observe(tutorialVideo);
+      }
+    });
+  </script>
+</body>
+</html>
