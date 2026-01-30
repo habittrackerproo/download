@@ -328,32 +328,23 @@
       padding: 40px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
       backdrop-filter: blur(10px);
     }
     
-    /* Google Sheets Format Only */
-    .format-selector {
-      margin-bottom: 40px;
+    /* 5 Template Grid */
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 25px;
+      margin-bottom: 30px;
     }
     
-    .format-title {
-      text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 25px;
-      color: var(--primary);
-    }
-    
-    .format-grid {
-      display: flex;
-      justify-content: center;
-    }
-    
-    .format-card {
-      background: rgba(30, 41, 59, 0.6);
+    .template-card {
+      background: rgba(30, 41, 59, 0.8);
       border-radius: 16px;
-      padding: 30px 40px;
+      padding: 20px;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -362,11 +353,10 @@
       overflow: hidden;
       text-decoration: none;
       display: block;
-      max-width: 400px;
-      width: 100%;
+      height: 100%;
     }
     
-    .format-card:before {
+    .template-card:before {
       content: '';
       position: absolute;
       top: -2px;
@@ -380,76 +370,75 @@
       transition: opacity 0.4s;
     }
     
-    .format-card:hover {
+    .template-card:hover {
       transform: translateY(-10px) scale(1.03);
       box-shadow: 0 15px 30px rgba(0,0,0,0.5);
       border-color: transparent;
     }
     
-    .format-card:hover:before {
+    .template-card:hover:before {
       opacity: 1;
     }
     
-    .format-card.selected {
-      background: rgba(16, 185, 129, 0.1);
-      border-color: var(--primary);
-    }
-    
-    .format-icon {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      color: var(--primary);
-      transition: all 0.3s;
-    }
-    
-    .format-card:hover .format-icon {
-      color: var(--text);
-      transform: scale(1.2);
-    }
-    
-    .format-name {
-      font-size: 1.8rem;
-      font-weight: 700;
+    .template-image {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
       margin-bottom: 15px;
-      transition: color 0.3s;
-      color: white;
-    }
-    
-    .format-card:hover .format-name {
-      color: var(--text);
-    }
-    
-    .format-desc {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      transition: color 0.3s;
-      margin-bottom: 15px;
-    }
-    
-    .format-card:hover .format-desc {
-      color: var(--text);
-    }
-    
-    .format-size {
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      font-size: 1rem;
-      color: var(--text-secondary);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 8px 15px;
-      border-radius: 20px;
-      margin: 15px auto;
-      width: fit-content;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
     }
     
-    .format-card:hover .format-size {
-      background: rgba(255, 255, 255, 0.1);
+    .template-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .template-card:hover .template-image img {
+      transform: scale(1.05);
+    }
+    
+    .template-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+      color: white;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .template-card:hover .template-name {
       color: var(--text);
-      border-color: transparent;
+    }
+    
+    .template-link {
+      display: inline-block;
+      background: var(--gradient);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      width: 100%;
+    }
+    
+    .template-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
     }
     
     /* Tutorial Video Sections */
@@ -835,6 +824,13 @@
     }
     
     /* Responsive */
+    @media (max-width: 1200px) {
+      .template-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+    }
+    
     @media (max-width: 992px) {
       .hero-content h1 {
         font-size: 3rem;
@@ -843,6 +839,11 @@
       .nav-links,
       .header-buttons {
         display: none;
+      }
+      
+      .template-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
       }
     }
     
@@ -859,13 +860,13 @@
         padding: 25px;
       }
       
-      .format-grid {
-        display: flex;
-        justify-content: center;
+      .template-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
       }
       
-      .format-card {
-        padding: 25px 20px;
+      .template-image {
+        height: 150px;
       }
       
       .video-container {
@@ -884,6 +885,11 @@
       
       .section-title {
         font-size: 2rem;
+      }
+      
+      .template-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
       }
       
       .video-container {
@@ -963,29 +969,72 @@
   <section class="download-section" id="download">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title fade-in">Download Habit Tracker Pro</h2>
-        <p class="section-subtitle fade-in delay-1">Get the Google Sheets template and start your productivity journey</p>
+        <h2 class="section-title fade-in">Get 5 Free Templates with Video Tutorial</h2>
+        <p class="section-subtitle fade-in delay-1">Choose from our 5 free Google Sheets templates and watch the video tutorial on how to download and use them</p>
       </div>
       
       <div class="download-container fade-in delay-2">
-        <div class="format-selector">
-          <div class="format-title">Google Sheets Template</div>
-          <div class="format-grid">
-            <div class="format-card" id="googleSheetsCard">
-              <div class="format-icon">
-                <i class="fab fa-google-drive"></i>
-              </div>
-              <h3 class="format-name">Google Sheets</h3>
-              <p class="format-desc">Access from any device with Google account</p>
-              <div class="format-size">
-                <i class="fas fa-cloud"></i>
-                <span>Online - No Download Required</span>
-              </div>
-              <button class="btn btn-primary" style="margin-top: 15px; padding: 12px 30px;">
-                <i class="fas fa-download"></i> Get Google Sheets Template
-              </button>
+        <div class="template-grid">
+          <!-- Template 1 -->
+          <div class="template-card" data-template="1">
+            <div class="template-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Template 1 Preview">
             </div>
+            <h3 class="template-name">Basic Habit Tracker</h3>
+            <a href="#" class="template-link">
+              <i class="fas fa-download"></i> Get Google Sheets Template
+            </a>
           </div>
+          
+          <!-- Template 2 -->
+          <div class="template-card" data-template="2">
+            <div class="template-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Template 2 Preview">
+            </div>
+            <h3 class="template-name">Advanced Habit Tracker</h3>
+            <a href="#" class="template-link">
+              <i class="fas fa-download"></i> Get Google Sheets Template
+            </a>
+          </div>
+          
+          <!-- Template 3 -->
+          <div class="template-card" data-template="3">
+            <div class="template-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Template 3 Preview">
+            </div>
+            <h3 class="template-name">Monthly Habit Tracker</h3>
+            <a href="#" class="template-link">
+              <i class="fas fa-download"></i> Get Google Sheets Template
+            </a>
+          </div>
+          
+          <!-- Template 4 -->
+          <div class="template-card" data-template="4">
+            <div class="template-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Template 4 Preview">
+            </div>
+            <h3 class="template-name">Fitness Habit Tracker</h3>
+            <a href="#" class="template-link">
+              <i class="fas fa-download"></i> Get Google Sheets Template
+            </a>
+          </div>
+          
+          <!-- Template 5 -->
+          <div class="template-card" data-template="5">
+            <div class="template-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Template 5 Preview">
+            </div>
+            <h3 class="template-name">Business Habit Tracker</h3>
+            <a href="#" class="template-link">
+              <i class="fas fa-download"></i> Get Google Sheets Template
+            </a>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+          <p style="color: var(--text-secondary); font-size: 1rem;">
+            Each template includes full access with your Google account. No download required - works online on any device.
+          </p>
         </div>
       </div>
     </div>
@@ -1237,9 +1286,8 @@
         });
       });
       
-      // Download functionality - رابط Google Sheets الخاص بك
-      const formatCard = document.getElementById('googleSheetsCard');
-      const downloadButton = formatCard.querySelector('.btn');
+      // Download functionality for template cards
+      const templateCards = document.querySelectorAll('.template-card');
       const downloadPopup = document.getElementById('downloadPopup');
       const closePopup = document.getElementById('closePopup');
       const directDownload = document.getElementById('directDownload');
@@ -1272,22 +1320,27 @@
         }, 1000);
       }
       
-      // تعيين الرابط لزر التنزيل
+      // تعيين الرابط لزر التنزيل في البوب أب
       directDownload.href = googleSheetsCopyLink;
       
-      // إضافة event listener لزر التنزيل الرئيسي
-      downloadButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        downloadPopup.classList.add('active');
-        startCountdown();
-      });
-      
-      // إضافة event listener للكارد كله
-      formatCard.addEventListener('click', function(e) {
-        if (!e.target.closest('.btn')) {
-          downloadPopup.classList.add('active');
-          startCountdown();
+      // إضافة event listener لبطاقات القوالب
+      templateCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (!e.target.closest('.template-link')) {
+            downloadPopup.classList.add('active');
+            startCountdown();
+          }
+        });
+        
+        // إضافة event listener لأزرار "Get Google Sheets Template"
+        const templateLink = card.querySelector('.template-link');
+        if (templateLink) {
+          templateLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            downloadPopup.classList.add('active');
+            startCountdown();
+          });
         }
       });
       
